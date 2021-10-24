@@ -18,7 +18,7 @@ st.write("""
 #st.header("1. About the change in the number of doctorate recipients by year")
 #data = pd.read_excel('recipients.xlsx', skiprows=3)
 #data=data.rename(columns={"Doctorate recipients":"recipients",
-                          "% change from previous year":"change"})
+#                          "% change from previous year":"change"})
 #fig1_1 = go.Figure(data=go.Scatter(x=data.Year, y=data.recipients, mode='lines'))
 
 #fig1_1.update_layout(
