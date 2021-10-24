@@ -15,28 +15,28 @@ st.write("""
 """)
 
 # Figure 1
-#st.header("1. About the change in the number of doctorate recipients by year")
-#data = pd.read_excel('recipients.xlsx', skiprows=3)
-#data=data.rename(columns={"Doctorate recipients":"recipients",
-#                          "% change from previous year":"change"})
-#fig1_1 = go.Figure(data=go.Scatter(x=data.Year, y=data.recipients, mode='lines'))
+st.header("1. About the change in the number of doctorate recipients by year")
+data = pd.read_excel('recipients.xlsx', skiprows=3)
+data=data.rename(columns={"Doctorate recipients":"recipients",
+                          "% change from previous year":"change"})
+fig1_1 = go.Figure(data=go.Scatter(x=data.Year, y=data.recipients, mode='lines'))
 
-#fig1_1.update_layout(
-#    title={'text':'Fig 1.1 Number of doctorate recipients by year',
-#           'xanchor':'center',
-#          'yanchor':'top',
-#           'x':0.5})
+fig1_1.update_layout(
+    title={'text':'Fig 1.1 Number of doctorate recipients by year',
+           'xanchor':'center',
+          'yanchor':'top',
+           'x':0.5})
 
 
-#fig1_2 = go.Figure(data=go.Scatter(x=data.Year, y=data.change, mode='lines'))
+fig1_2 = go.Figure(data=go.Scatter(x=data.Year, y=data.change, mode='lines'))
 
-#fig1_2.update_layout(
-#    title={'text':'Fig 1.2 Percent of change from previous year by year',
-#           'xanchor':'center',
-#           'yanchor':'top',
-#           'x':0.5})
-#st.plotly_chart(fig1_1, use_container_width=True)
-#st.plotly_chart(fig1_2, use_container_width=True)
+fig1_2.update_layout(
+    title={'text':'Fig 1.2 Percent of change from previous year by year',
+           'xanchor':'center',
+           'yanchor':'top',
+           'x':0.5})
+st.plotly_chart(fig1_1, use_container_width=True)
+st.plotly_chart(fig1_2, use_container_width=True)
 
 
 
