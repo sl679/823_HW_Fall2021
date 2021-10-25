@@ -1,6 +1,3 @@
-
-
-
 import streamlit as st
 #import matplotlib.pyplot as plt
 import plotly.express as px
@@ -213,59 +210,157 @@ majors_list = list(data3.columns)
 majors_list.remove("Institutions")
 
 
-select_school = st.selectbox('Which school?', data3.Institutions)
+select_school = st.selectbox('Which school do you want to look at?', data3.Institutions)
 
 school_list = list(data3.Institutions)
 index = school_list.index(select_school)
 
-#fig4 = make_subplots(rows=len(select_major), cols=1, shared_xaxes=True, vertical_spacing=0.03)
 fig4 = go.Figure()
 fig4.add_trace(go.Pie(labels=majors_list, values=data3.iloc[index]))
 
 st.plotly_chart(fig4)
 
+# Figure 5
+
+st.header("5. Statistical profile of doctorate recipients, by sex and broad field of study: 2017")
+data4 = pd.read_excel("profile.xlsx", skiprows=3)
+data4 = data4.drop([4])
+
+st.dataframe(data4)
+
+field_list = list(data4.columns)
+field_list.remove("Characteristic")
+
+
+
+select_field = str(st.selectbox(label='Which field of study do you want to look at?', options=field_list))
+select_feature = str(st.selectbox(label='Which feature do you want to look at?',
+                                  options=["Sex (%)", "Citizenship (%)", "Marital status (%)"]
+                                  ))
+
+fig5 = go.Figure()
+
+if (select_field == 'All fields') & (select_feature == 'Sex (%)'):
+	fig5.add_trace(go.Bar(x=data4["Characteristic"].iloc[2:4],
+                          y=data4["All fields"].iloc[2:4]))
+
+if (select_field == 'Life sciencesa') & (select_feature == 'Sex (%)'):
+	fig5.add_trace(go.Bar(x=data4["Characteristic"].iloc[2:4],
+                          y=data4["Life sciencesa"].iloc[2:4]))
+
+if (select_field == 'Physical sciences and earth sciences') & (select_feature == 'Sex (%)'):
+	fig5.add_trace(go.Bar(x=data4["Characteristic"].iloc[2:4],
+                          y=data4["Physical sciences and earth sciences"].iloc[2:4]))
+
+
+if (select_field == 'Mathematics and computer sciences') & (select_feature == 'Sex (%)'):
+	fig5.add_trace(go.Bar(x=data4["Characteristic"].iloc[2:4],
+                          y=data4["Mathematics and computer sciences"].iloc[2:4]))
+
+if (select_field == 'Psychology and social sciences') & (select_feature == 'Sex (%)'):
+	fig5.add_trace(go.Bar(x=data4["Characteristic"].iloc[2:4],
+                          y=data4["Psychology and social sciences"].iloc[2:4]))
+
+if (select_field == 'Engineering') & (select_feature == 'Sex (%)'):
+	fig5.add_trace(go.Bar(x=data4["Characteristic"].iloc[2:4],
+                          y=data4["Engineering"].iloc[2:4]))
+
+
+if (select_field == 'Education') & (select_feature == 'Sex (%)'):
+	fig5.add_trace(go.Bar(x=data4["Characteristic"].iloc[2:4],
+                          y=data4["Education"].iloc[2:4]))
+
+
+if (select_field == 'Humanities and arts') & (select_feature == 'Sex (%)'):
+	fig5.add_trace(go.Bar(x=data4["Characteristic"].iloc[2:4],
+                          y=data4["Humanities and arts"].iloc[2:4]))
+
+if (select_field == 'Other') & (select_feature == 'Sex (%)'):
+	fig5.add_trace(go.Bar(x=data4["Characteristic"].iloc[2:4],
+                          y=data4["Other"].iloc[2:4]))
 
 
 
 
+if (select_field == 'All fields') & (select_feature == 'Citizenship (%)'):
+	fig5.add_trace(go.Bar(x=data4["Characteristic"].iloc[5:8],
+                          y=data4["All fields"].iloc[5:8]))
+
+if (select_field == 'Life sciencesa') & (select_feature == 'Citizenship (%)'):
+	fig5.add_trace(go.Bar(x=data4["Characteristic"].iloc[5:8],
+                          y=data4["Life sciencesa"].iloc[5:8]))
+
+if (select_field == 'Physical sciences and earth sciences') & (select_feature == 'Citizenship (%)'):
+	fig5.add_trace(go.Bar(x=data4["Characteristic"].iloc[5:8],
+                          y=data4["Physical sciences and earth sciences"].iloc[5:8]))
+
+
+if (select_field == 'Mathematics and computer sciences') & (select_feature == 'Citizenship (%)'):
+	fig5.add_trace(go.Bar(x=data4["Characteristic"].iloc[5:8],
+                          y=data4["Mathematics and computer sciences"].iloc[5:8]))
+
+if (select_field == 'Psychology and social sciences') & (select_feature == 'Citizenship (%)'):
+	fig5.add_trace(go.Bar(x=data4["Characteristic"].iloc[5:8],
+                          y=data4["Psychology and social sciences"].iloc[5:8]))
+
+if (select_field == 'Engineering') & (select_feature == 'Citizenship (%)'):
+	fig5.add_trace(go.Bar(x=data4["Characteristic"].iloc[5:8],
+                          y=data4["Engineering"].iloc[5:8]))
+
+
+if (select_field == 'Education') & (select_feature == 'Citizenship (%)'):
+	fig5.add_trace(go.Bar(x=data4["Characteristic"].iloc[5:8],
+                          y=data4["Education"].iloc[5:8]))
+
+
+if (select_field == 'Humanities and arts') & (select_feature == 'Citizenship (%)'):
+	fig5.add_trace(go.Bar(x=data4["Characteristic"].iloc[5:8],
+                          y=data4["Humanities and arts"].iloc[5:8]))
+
+if (select_field == 'Other') & (select_feature == 'Citizenship (%)'):
+	fig5.add_trace(go.Bar(x=data4["Characteristic"].iloc[5:8],
+                          y=data4["Other"].iloc[5:8]))
 
 
 
 
+if (select_field == 'All fields') & (select_feature == 'Marital status (%)'):
+	fig5.add_trace(go.Bar(x=data4["Characteristic"].iloc[9:11],
+                          y=data4["All fields"].iloc[9:11]))
+
+if (select_field == 'Life sciencesa') & (select_feature == 'Marital status (%)'):
+	fig5.add_trace(go.Bar(x=data4["Characteristic"].iloc[9:11],
+                          y=data4["Life sciencesa"].iloc[9:11]))
+
+if (select_field == 'Physical sciences and earth sciences') & (select_feature == 'Marital status (%)'):
+	fig5.add_trace(go.Bar(x=data4["Characteristic"].iloc[9:11],
+                          y=data4["Physical sciences and earth sciences"].iloc[9:11]))
 
 
+if (select_field == 'Mathematics and computer sciences') & (select_feature == 'Marital status (%)'):
+	fig5.add_trace(go.Bar(x=data4["Characteristic"].iloc[9:11],
+                          y=data4["Mathematics and computer sciences"].iloc[9:11]))
+
+if (select_field == 'Psychology and social sciences') & (select_feature == 'Marital status (%)'):
+	fig5.add_trace(go.Bar(x=data4["Characteristic"].iloc[9:11],
+                          y=data4["Psychology and social sciences"].iloc[9:11]))
+
+if (select_field == 'Engineering') & (select_feature == 'Marital status (%)'):
+	fig5.add_trace(go.Bar(x=data4["Characteristic"].iloc[9:11],
+                          y=data4["Engineering"].iloc[9:11]))
 
 
+if (select_field == 'Education') & (select_feature == 'Marital status (%)'):
+	fig5.add_trace(go.Bar(x=data4["Characteristic"].iloc[9:11],
+                          y=data4["Education"].iloc[9:11]))
 
 
+if (select_field == 'Humanities and arts') & (select_feature == 'Marital status (%)'):
+	fig5.add_trace(go.Bar(x=data4["Characteristic"].iloc[9:11],
+                          y=data4["Humanities and arts"].iloc[9:11]))
 
+if (select_field == 'Other') & (select_feature == 'Marital status (%)'):
+	fig5.add_trace(go.Bar(x=data4["Characteristic"].iloc[9:11],
+                          y=data4["Other"].iloc[9:11]))
 
-
-#inst = st.multiselect('Institutions', options=data3.Institutions)
-#major = st.multiselect('Filed of study', options=majors_list)
-
-#index = majors_list.index(major)
-
-#fig4 = go.Figure()
-
-#fig4.add_trace(go.Pie(labels=data3["Institutions"], values=data3[index]))
-
-
-#fig4 = px.pie(data, values='Doctorate recipients', names='Institution', title='Example1')
-
-#st.dataframe(data)
-#st.plotly_chart(fig, use_container_width=True)
-
-#print(data3.Institutions.get(1))
-
-#fig4.add_trace(go.Pie(data3, values="Chemistry", names='Institution', title='Example1'))
-
-#fig4.add_trace(go.Pie(labels=data3["Institutions"], values=data3["Chemistry"]))
-
-
-
-#st.dataframe(data)
-
-#st.plotly_chart(fig4, use_container_width=True)
-
-#st.plotly_chart(fig4, use_container_width=True)
+st.plotly_chart(fig5, use_container_width=True)
