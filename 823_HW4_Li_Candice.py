@@ -226,8 +226,6 @@ st.header("5. Statistical profile of doctorate recipients, by sex and broad fiel
 data4 = pd.read_excel("profile.xlsx", skiprows=3)
 data4 = data4.drop([4])
 
-st.dataframe(data4)
-
 field_list = list(data4.columns)
 field_list.remove("Characteristic")
 
