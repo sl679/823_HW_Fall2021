@@ -157,3 +157,4 @@ wrapt==1.12.1
 xlrd==2.0.1
 yarg==0.1.9
 yfinance==0.1.63
+matplotlib.pyplot
