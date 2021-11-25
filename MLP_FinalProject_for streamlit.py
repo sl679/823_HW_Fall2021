@@ -67,7 +67,7 @@ import plotly.graph_objects as go
 
 
 
-covid = pd.read_csv('/Users/shenjiajie/Desktop/Duke/823/United_States_COVID-19_Cases_and_Deaths_by_State_over_Time.csv')
+covid = pd.read_csv('United_States_COVID-19_Cases_and_Deaths_by_State_over_Time.csv')
 
 covid['submission_date'] = pd.to_datetime(covid['submission_date'])
 
